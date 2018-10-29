@@ -12,7 +12,7 @@
 </head>
 <body>
 
-        <h2>Guess which letter the computer picked, you have 9 tries!</h2>
+        <h2>Guess which letter the computer picked, you have 10 tries!</h2>
         <br>
         <br>
 
@@ -22,6 +22,8 @@
         <p id="computer"></p>
         <h3>Results</h3>
         <p id="p1"></p>
+        <h3>Attempts</h3>
+        <p id="attempts"></p>
         <h4>Total Wins</h4>
         <p id="win"></p>
         <h4>Total Losses</h4>
@@ -32,6 +34,7 @@
     <script>
 
     var WinCounter = 0;
+    var AttemptsCounter = 0;
     var LossCounter = 0;
 
       document.onkeyup = function(event) {
@@ -103,16 +106,28 @@
                 document.getElementById("p1").innerHTML = "You Win!";
                 WinCounter++
                 document.getElementById("win").innerHTML = WinCounter;
+                AttemptsCounter=0;
             }
+
             else {
-                document.getElementById("p1").innerHTML = "You Lose!";
-                LossCounter++
-                document.getElementById("loss").innerHTML = LossCounter;
+                AttemptsCounter++
+                document.getElementById("attempts").innerHTML = AttemptsCounter;
+                document.getElementById("p1").innerHTML = "Guess Again!";
                 }
             }
+
             var results = compare(userguess,computerChoice);
+
+                if(AttemptsCounter>=10){
+                LossCounter++
+                document.getElementById("loss").innerHTML = LossCounter;
+                document.getElementById("p1").innerHTML = "You Lose!";
+                AttemptsCounter=0;
+
+            }
+           
         };
-        
+
     
        
 
