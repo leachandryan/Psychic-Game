@@ -17,6 +17,7 @@
         <button onclick="myFunction()">Try it</button>
         
         <p id="demo"></p>
+        <p id="demo2"></p>
         
 
 <div class="game">
@@ -80,7 +81,13 @@
         }
 
         document.getElementById("demo").innerHTML = computerChoice;
+ };
 
+      document.onkeyup = function(event) {
+
+        var userguess = event.key.toLowerCase();
+
+        document.getElementById("demo2").innerHTML = userguess;
 
 };
     </script>
