@@ -12,20 +12,28 @@
 </head>
 <body>
 
-        <p>Click the button to display a random number between 1 and 10.</p>
+        <p>Guess which letter the computer picked, you have 9 tries!</p>
 
-        <button onclick="myFunction()">Try it</button>
         
-        <p id="demo"></p>
-        <p id="demo2"></p>
+        <p id="user"></p>
+        <p id="computer"></p>
+        <p id="p1"></p>
         
 
 <div class="game">
 
     <script>
- 
- function myFunction() {
-    var computerChoice = Math.floor((Math.random() * 26) + 1);
+
+    var WinCounter = 0;
+    var LossCounter = 0;
+
+      document.onkeyup = function(event) {
+
+        var userguess = event.key.toLowerCase();
+
+        document.getElementById("user").innerHTML = userguess;
+
+            var computerChoice = Math.floor((Math.random() * 26) + 1);
     if (computerChoice <= 1) {
             computerChoice = "a";
         } else if(computerChoice <= 2) {
@@ -80,16 +88,21 @@
             computerChoice = "z";
         }
 
-        document.getElementById("demo").innerHTML = computerChoice;
- };
+        document.getElementById("computer").innerHTML = computerChoice;
 
-      document.onkeyup = function(event) {
 
-        var userguess = event.key.toLowerCase();
+        var compare = function(choice1,choice2) {
+            if (choice1 === choice2) {
+                document.getElementById("p1").innerHTML = "You Win!";
+            }
+            else {
+                document.getElementById("p1").innerHTML = "You Lose!";
+                }
+            }
+            var results = compare(userguess,computerChoice);
+        };
+       
 
-        document.getElementById("demo2").innerHTML = userguess;
-
-};
     </script>
 
 </div>
